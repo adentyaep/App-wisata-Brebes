@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:layout_marginBottom="62dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Daftar Akun"
+        android:textSize="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="706dp"
+        android:layout_below="@id/textView"
+        android:background="@drawable/bg_login"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <EditText
+            android:id="@+id/edtNamaDaftar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/form_shape"
+            android:hint="Nama Lengkap"
+            android:inputType="text"
+            android:paddingLeft="15dp"
+            android:shadowColor="@color/black"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/edtUsernameDaftar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/form_shape"
+            android:hint="Username"
+            android:inputType="text"
+            android:paddingLeft="15dp"
+            android:shadowColor="@color/black"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/edtEmailDaftar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/form_shape"
+            android:hint="Email"
+            android:inputType="text"
+            android:paddingLeft="15dp"
+            android:shadowColor="@color/black"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/edtPasswordDaftar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/form_shape"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingLeft="15dp"
+            android:shadowColor="@color/black"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/edtConPasswordDaftar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/form_shape"
+            android:hint="Konfirmasi Password"
+            android:inputType="textPassword"
+            android:paddingLeft="15dp"
+            android:shadowColor="@color/black"
+            android:textSize="16dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/button_daftar_shape"
+            android:fontFamily="sans-serif-black"
+            android:shadowColor="@color/black"
+            android:text="DAFTAR"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:id="@+id/btnDaftar"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Login"
+            android:id="@+id/txtLogin"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:text="Copyright © Adentya 2022"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="12dp" />
+
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

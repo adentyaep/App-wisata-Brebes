@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/xampp/htdocs/App-wisata-Brebes/appWisata(android)/app/src/main/res/drawable/button_daftar_shape.xml" value="0.1785" />
+        <entry key="..\:/xampp/htdocs/App-wisata-Brebes/appWisata(android)/app/src/main/res/drawable/button_shape.xml" value="0.1895" />
+        <entry key="..\:/xampp/htdocs/App-wisata-Brebes/appWisata(android)/app/src/main/res/drawable/rute.xml" value="0.1895" />
+        <entry key="..\:/xampp/htdocs/App-wisata-Brebes/appWisata(android)/app/src/main/res/layout/activity_daftar.xml" value="0.2" />
+        <entry key="..\:/xampp/htdocs/App-wisata-Brebes/appWisata(android)/app/src/main/res/layout/activity_detail_wisata.xml" value="0.22" />
+        <entry key="..\:/xampp/htdocs/App-wisata-Brebes/appWisata(android)/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/xampp/htdocs/App-wisata-Brebes/appWisata(android)/app/src/main/res/layout/activity_main.xml" value="0.1641025641025641" />
+        <entry key="..\:/xampp/htdocs/App-wisata-Brebes/appWisata(android)/app/src/main/res/layout/activity_maps.xml" value="0.1641025641025641" />
+        <entry key="..\:/xampp/htdocs/App-wisata-Brebes/appWisata(android)/app/src/main/res/layout/list_hotel.xml" value="0.1641025641025641" />
+        <entry key="..\:/xampp/htdocs/App-wisata-Brebes/appWisata(android)/app/src/main/res/layout/list_wisata.xml" value="0.25" />
         <entry key="..\:/xampp/htdocs/appWisata(android)/app/src/main/res/drawable/bg_login.xml" value="0.2552083333333333" />
         <entry key="..\:/xampp/htdocs/appWisata(android)/app/src/main/res/drawable/button_daftar_shape.xml" value="0.2552083333333333" />
         <entry key="..\:/xampp/htdocs/appWisata(android)/app/src/main/res/drawable/button_shape.xml" value="0.3828125" />

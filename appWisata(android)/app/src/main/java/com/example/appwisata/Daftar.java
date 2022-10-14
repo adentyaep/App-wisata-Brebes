@@ -66,10 +66,10 @@ public class Daftar extends AppCompatActivity {
                 String sEmail = email.getText().toString();
                 String sPassword = password.getText().toString();
                 String sConpassword = conpassword.getText().toString();
-                String slevUser = levUser;
+                //String slevUser = levUser;
 
                 if (sPassword.equals(sConpassword) && !sPassword.equals("")){
-                    CreateDataToServer(sNama,sUsername,sEmail,sPassword,slevUser);
+                    CreateDataToServer(sUsername, sPassword, sNama, sEmail);
                     Intent loginIntent = new Intent(Daftar.this, Login.class);
                     startActivity(loginIntent);
                 } else {
@@ -79,7 +79,7 @@ public class Daftar extends AppCompatActivity {
         });
     }
 
-    public void CreateDataToServer(final String nama, final String username,final String email, final String password, final String levUser){
+    public void CreateDataToServer(final String username, final String password, final String nama, final String email){
         if (checkNetworkConnection()){
             progressDialog.show();
             StringRequest stringRequest = new StringRequest(Request.Method.POST, DbContract.SERVER_REGISTER_URL,

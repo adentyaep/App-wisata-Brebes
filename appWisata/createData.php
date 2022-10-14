@@ -6,12 +6,12 @@
         $password = $_POST['password'];
         $nama = $_POST['nama'];
         $email = $_POST['email'];
-        $levUser = $_POST['levUser'];
+        //$levUser = $_POST['levUser'];
         
 
-        $query = "INSERT INTO user(username,password,nama,email,level_user) VALUES('$username','$password','$nama','$email','$levUser')";
+        $query = "INSERT INTO user(username,password,nama,email) VALUES('$username','$password','$nama','$email')";
 
-        if($username != "" && $password != "" && $nama != "" && $email != ""&& $levUser != "") {
+        if($username != "" && $password != "" && $nama != "" && $email) {
             $result = mysqli_query($con,$query);
             $response = array();
 

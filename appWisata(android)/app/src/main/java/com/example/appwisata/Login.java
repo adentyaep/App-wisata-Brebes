@@ -1,13 +1,9 @@
 package com.example.appwisata;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.net.Network;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -26,7 +25,6 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.StringReader;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,22 +34,26 @@ public class Login extends AppCompatActivity {
     TextView txtDaftar;
     Button btnLogin;
     ProgressDialog progressDialog;
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        sessionManager = new SessionManager(this);
+
         username = (EditText) findViewById(R.id.edtUsername);
         password = (EditText) findViewById(R.id.edtPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         txtDaftar = (TextView) findViewById(R.id.txtDaftar);
         progressDialog = new ProgressDialog(Login.this);
+        progressDialog.setMessage("Loading Data");
 
         txtDaftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent daftarIntent = new Intent(Login.this,Daftar.class);
+                Intent daftarIntent = new Intent(Login.this, Daftar.class);
                 startActivity(daftarIntent);
             }
         });
@@ -62,40 +64,37 @@ public class Login extends AppCompatActivity {
                 String sUsername = username.getText().toString();
                 String sPassword = password.getText().toString();
 
-                CheckLogin(sUsername,sPassword);
+                CheckLogin(sUsername, sPassword);
 
             }
         });
     }
 
-    public void CheckLogin(final String username, final String password){
-        if (checkNetworkConnection()){
+    public void CheckLogin(final String username, final String password) {
+        if (checkNetworkConnection()) {
             progressDialog.show();
             StringRequest stringRequest = new StringRequest(Request.Method.POST, DbContract.SERVER_LOGIN_URL,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            try {
-                                JSONObject jsonObject = new JSONObject(response);
-                                String resp = jsonObject.getString("server_response");
+                    response -> {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String resp = jsonObject.getString("server_response");
 
-                                if (resp.equals("[{\"status\":\"OK\"}]")){
-                                    Toast.makeText(getApplicationContext(),"Login Berhasil", Toast.LENGTH_SHORT).show();
-                                    Intent dashboard = new Intent(Login.this,MainActivity.class);
-                                    startActivity(dashboard);
-                                } else {
-                                    Toast.makeText(getApplicationContext(),resp, Toast.LENGTH_SHORT).show();
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                            if (resp.equals("{\"status\":\"OK\"}")) {
+                                Toast.makeText(getApplicationContext(), "Login Berhasil", Toast.LENGTH_SHORT).show();
+
+                                sessionManager.createSession(username);
+                                Intent dashboard = new Intent(Login.this, MainActivity.class);
+                                startActivity(dashboard);
+
+                            } else {
+                                Toast.makeText(getApplicationContext(), resp, Toast.LENGTH_SHORT).show();
                             }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-
-                }
-            }) {
+                    }, error -> {
+                        error.printStackTrace();
+                    }) {
                 @Nullable
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
@@ -115,13 +114,13 @@ public class Login extends AppCompatActivity {
                     progressDialog.cancel();
 
                 }
-            }, 2000);
+            }, 5000);
         } else {
-            Toast.makeText(getApplicationContext(),"Tidak Ada Koneksi Internet", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Tidak Ada Koneksi Internet", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public boolean checkNetworkConnection(){
+    public boolean checkNetworkConnection() {
         ConnectivityManager connectivityManager = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
 
